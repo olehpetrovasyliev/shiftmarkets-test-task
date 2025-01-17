@@ -1,6 +1,4 @@
-export type Category = { id: string; name: string };
-
-export type CategoriesList = Category[];
+export type CategoriesList = string[];
 
 export type Event = {
   id: string;
@@ -12,3 +10,12 @@ export type Event = {
 };
 
 export type EventsList = Event[];
+
+export type EventsState = {
+  events: Event[];
+  currentPage: number;
+  eventsPerPage: number;
+  searchQuery: string;
+  selectedCategory: string;
+  selectedEvent: Event | null;
+};
