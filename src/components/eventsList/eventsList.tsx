@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { EventsList } from "../../helpers/types/types";
-import EventCard from "../eventCard/evenCtard";
+import EventCard from "../eventCard/EvenCard";
 
 type EventsListProps = { events: EventsList };
 

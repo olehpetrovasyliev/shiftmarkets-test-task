@@ -9,9 +9,11 @@ import {
   setSelectedCategory,
   setSearchQuery,
   setPage,
+  addEvent,
 } from "./helpers/redux/events/eventsSlice";
 import EventCardsList from "./components/eventsList/eventsList";
 import { selectAllCategories } from "./helpers/redux/categories/categoriesSelectors";
+import EventForm from "./components/eventForm/EventForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -80,6 +82,7 @@ function App() {
           </button>
         ))}
       </div>
+      <EventForm onSubmit={(data) => dispatch(addEvent(data))} />
     </div>
   );
 }

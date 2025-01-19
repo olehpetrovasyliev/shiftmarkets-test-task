@@ -102,7 +102,7 @@ const eventsSlice = createSlice({
       );
 
       if (!isOverlapping) {
-        state.events.push(action.payload);
+        state.events.push({ ...action.payload, id: crypto.randomUUID() });
       } else {
         throw new Error("Event overlaps with an existing event.");
       }
