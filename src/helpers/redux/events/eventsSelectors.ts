@@ -6,8 +6,7 @@ export const selectFilteredEvents = (state: RootState) => {
 
   const filteredEvents = events.filter((event) => {
     return (
-      (event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        event.description.toLowerCase().includes(searchQuery.toLowerCase())) &&
+      event.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
       (selectedCategory ? event.category === selectedCategory : true)
     );
   });
