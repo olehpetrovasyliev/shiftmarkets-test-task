@@ -126,6 +126,11 @@ const eventsSlice = createSlice({
       );
       if (index !== -1) {
         state.events.splice(index, 1);
+
+        const totalPages = Math.ceil(state.events.length / state.eventsPerPage);
+        if (state.currentPage > totalPages) {
+          state.currentPage = totalPages;
+        }
       } else {
         throw new Error("Event not found.");
       }
