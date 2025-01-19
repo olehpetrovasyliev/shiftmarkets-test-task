@@ -1,4 +1,3 @@
-import { EventsState } from "../../types/types";
 import { RootState } from "../store";
 
 export const selectFilteredEvents = (state: RootState) => {
@@ -15,9 +14,8 @@ export const selectFilteredEvents = (state: RootState) => {
 
   const startIndex = (currentPage - 1) * eventsPerPage;
   const endIndex = startIndex + eventsPerPage;
-  const paginatedEvents = filteredEvents.slice(startIndex, endIndex);
 
-  return paginatedEvents;
+  return filteredEvents.slice(startIndex, endIndex);
 };
 
 export const selectTotalPages = (state: RootState) => {

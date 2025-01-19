@@ -25,7 +25,7 @@ const initialState: EventsState = {
       description: "Deep dive into Angular",
       date: "2025-01-22",
       time: "09:00",
-      category: "Bootcamp",
+      category: "Workshop",
     },
     {
       id: "4",
@@ -41,7 +41,7 @@ const initialState: EventsState = {
       description: "Launch new product features",
       date: "2025-01-24",
       time: "15:00",
-      category: "Launch",
+      category: "Meeting",
     },
     {
       id: "6",
@@ -49,7 +49,7 @@ const initialState: EventsState = {
       description: "Networking for React developers",
       date: "2025-01-25",
       time: "12:00",
-      category: "Networking",
+      category: "Meeting",
     },
     {
       id: "7",
@@ -57,7 +57,7 @@ const initialState: EventsState = {
       description: "Join the JavaScript community",
       date: "2025-01-26",
       time: "18:00",
-      category: "Meetup",
+      category: "Meeting",
     },
     {
       id: "8",
@@ -65,7 +65,7 @@ const initialState: EventsState = {
       description: "Learn design thinking principles",
       date: "2025-01-27",
       time: "10:00",
-      category: "Workshop",
+      category: "Webinar",
     },
     {
       id: "9",
@@ -73,7 +73,7 @@ const initialState: EventsState = {
       description: "Industry leaders discuss the future of tech",
       date: "2025-01-28",
       time: "09:30",
-      category: "Summit",
+      category: "Webinar",
     },
     {
       id: "10",
@@ -81,7 +81,7 @@ const initialState: EventsState = {
       description: "Frontend devs meet to discuss trends",
       date: "2025-01-29",
       time: "16:00",
-      category: "Meetup",
+      category: "Webinar",
     },
   ],
   currentPage: 1,
