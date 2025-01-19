@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  selectCurrentPage,
   selectFilteredEvents,
   selectTotalPages,
 } from "./helpers/redux/events/eventsSelectors";
@@ -20,7 +21,7 @@ function App() {
   const categories = useSelector(selectAllCategories);
   const events = useSelector(selectFilteredEvents);
   const totalPages = useSelector(selectTotalPages);
-
+  const currentPage = useSelector(selectCurrentPage);
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setSelectedCategory(e.target.value));
     dispatch(setPage(1));
@@ -37,52 +38,48 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ marginBottom: "20px" }}>
-        <label htmlFor="search">Search:</label>
-        <input
-          id="search"
-          type="text"
-          onChange={handleSearchChange}
-          style={{ marginLeft: "10px", padding: "5px" }}
-          placeholder="Search events..."
-        />
-      </div>
-      <div style={{ marginBottom: "20px" }}>
-        <label htmlFor="category">Filter by category:</label>
-        <select
-          id="category"
-          onChange={handleCategoryChange}
-          style={{ marginLeft: "10px" }}
-        >
-          <option value="">All</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+      <div className="header">
+        <div>
+          <label htmlFor="search">Search:</label>
+          <input
+            id="search"
+            type="text"
+            onChange={handleSearchChange}
+            placeholder="Search events..."
+          />
+        </div>
+        <div>
+          <label htmlFor="category">Filter by category:</label>
+          <select id="category" onChange={handleCategoryChange}>
+            <option value="">All</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <EventCardsList events={events} />
-      <div style={{ marginTop: "20px", textAlign: "center" }}>
+      <div className="paginationContainer">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            style={{
-              margin: "0 5px",
-              padding: "5px 10px",
-              backgroundColor: "#007bff",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
+            className={
+              index + 1 === currentPage
+                ? " paginationBtn active"
+                : "paginationBtn"
+            }
           >
             {index + 1}
           </button>
         ))}
       </div>
-      <EventForm onSubmit={(data) => dispatch(addEvent(data))} />
+      <EventForm
+        onSubmit={(data) => dispatch(addEvent(data))}
+        heading="Add event"
+      />
     </div>
   );
 }

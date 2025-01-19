@@ -85,7 +85,7 @@ const initialState: EventsState = {
     },
   ],
   currentPage: 1,
-  eventsPerPage: 5,
+  eventsPerPage: 3,
   searchQuery: "",
   selectedCategory: "",
   selectedEvent: null,
@@ -148,15 +148,11 @@ const eventsSlice = createSlice({
       state.currentPage = action.payload;
     },
     setSelectedEvent: (state, action: PayloadAction<string | null>) => {
-      if (action.payload === null) {
-        state.selectedEvent = null;
-      } else {
-        const selectedEvent = state.events.find(
-          (event) => event.id === action.payload
-        );
-        if (selectedEvent) {
-          state.selectedEvent = selectedEvent;
-        }
+      const selectedEvent = state.events.find(
+        (event) => event.id === action.payload
+      );
+      if (selectedEvent) {
+        state.selectedEvent = selectedEvent;
       }
     },
   },

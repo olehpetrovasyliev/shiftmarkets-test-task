@@ -30,3 +30,5 @@ export const selectTotalPages = (state: RootState) => {
 
   return Math.ceil(filteredEvents.length / eventsPerPage);
 };
+
+export const selectCurrentPage = (state: RootState) => state.events.currentPage;

@@ -1,12 +1,9 @@
 import { FC, useState } from "react";
 import { Event } from "../../helpers/types/types";
 import { useDispatch } from "react-redux";
-import {
-  deleteEvent,
-  editEvent,
-  setSelectedEvent,
-} from "../../helpers/redux/events/eventsSlice";
+import { deleteEvent, editEvent } from "../../helpers/redux/events/eventsSlice";
 import EventForm from "../eventForm/EventForm";
+import styles from "./EventCard.module.scss";
 
 type EventProps = { event: Event };
 
@@ -28,16 +25,13 @@ const EventCard: FC<EventProps> = ({ event }) => {
   };
 
   return (
-    <li
-      key={event.id}
-      style={{
-        marginBottom: "15px",
-        border: "1px solid #ccc",
-        padding: "10px",
-      }}
-    >
+    <li key={event.id} className={styles.eventCard}>
       {isEditing ? (
-        <EventForm initialValues={event} onSubmit={handleSubmit} />
+        <EventForm
+          initialValues={event}
+          onSubmit={handleSubmit}
+          heading={`Edit ${event.title}`}
+        />
       ) : (
         <>
           <h3>{event.title}</h3>
@@ -49,14 +43,9 @@ const EventCard: FC<EventProps> = ({ event }) => {
           <p>
             <strong>Category:</strong> {event.category}
           </p>
-          <div>
+          <div className={styles.eventCard__buttonsWrapper}>
             <button onClick={() => handleEditClick()}>Edit</button>
-            <button
-              onClick={() => handleDeleteClick(event.id)}
-              style={{ marginLeft: "10px" }}
-            >
-              Delete
-            </button>
+            <button onClick={() => handleDeleteClick(event.id)}>Delete</button>
           </div>
         </>
       )}
