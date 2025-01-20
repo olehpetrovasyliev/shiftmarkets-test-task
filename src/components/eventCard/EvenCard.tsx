@@ -3,7 +3,7 @@ import { Event } from "../../helpers/types/types";
 import { useDispatch } from "react-redux";
 import { deleteEvent, editEvent } from "../../helpers/redux/events/eventsSlice";
 import EventForm from "../eventForm/EventForm";
-import styles from "./EventCard.module.scss";
+import styles from "./eventCard.module.scss";
 
 type EventProps = { event: Event };
 
