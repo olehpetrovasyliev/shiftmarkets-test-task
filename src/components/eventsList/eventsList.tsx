@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { EventsList } from "../../helpers/types/types";
 import EventCard from "../eventCard/EvenCard";
-import styles from "./EventsList.module.scss";
+import styles from "./eventsList.module.scss";
 
 type EventsListProps = { events: EventsList };
 
